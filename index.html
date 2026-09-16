@@ -1246,11 +1246,14 @@
       }
 
       .nav-links {
-        gap: 20px;
+        gap: 14px 18px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .nav-link {
-        font-size: 12px;
+        font-size: 11px;
+        white-space: nowrap;
       }
 
       /* HERO */
@@ -1365,6 +1368,459 @@
       .work-eyebrow::before { transition: none; opacity: 1; transform: none; filter: none; }
       .play-ring-wrap svg   { animation: none; }
       .work-card            { transition: opacity 200ms; }
+    }
+
+    /* ─── COPYWRITING SECTION ─── */
+    .copy-section {
+      background: var(--bg);
+      padding: 96px 56px 120px;
+    }
+
+    .copy-header { max-width: 720px; margin-bottom: 56px; }
+
+    .copy-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .copy-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--amber);
+      flex-shrink: 0;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 600ms var(--ease-out);
+      transition-delay: 80ms;
+    }
+
+    .copy-section.is-visible .copy-eyebrow::before { transform: scaleX(1); }
+
+    .copy-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 6vw, 84px);
+      line-height: 0.92;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(22px);
+      filter: blur(6px);
+      transition:
+        opacity   800ms var(--ease-out),
+        transform 800ms var(--ease-out),
+        filter    800ms var(--ease-out);
+      transition-delay: 120ms;
+    }
+
+    .copy-section.is-visible .copy-title {
+      opacity: 1;
+      transform: none;
+      filter: blur(0);
+    }
+
+    .copy-bio {
+      max-width: 620px;
+      opacity: 0;
+      transform: translateY(16px);
+      transition:
+        opacity   600ms var(--ease-out),
+        transform 600ms var(--ease-out);
+      transition-delay: 220ms;
+    }
+
+    .copy-section.is-visible .copy-bio {
+      opacity: 1;
+      transform: none;
+    }
+
+    .copy-bio p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .copy-bio p:last-child { margin-bottom: 0; }
+    .copy-bio strong { color: var(--ink); font-weight: 600; }
+    .copy-bio u { text-decoration-color: var(--amber); text-underline-offset: 3px; }
+
+    /* Case study cards */
+    .copy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 56px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition:
+        opacity   700ms var(--ease-out),
+        transform 700ms var(--ease-out);
+      transition-delay: 320ms;
+    }
+
+    .copy-section.is-visible .copy-grid {
+      opacity: 1;
+      transform: none;
+    }
+
+    .copy-card {
+      background: var(--surface);
+      border: 1px solid var(--border-sub);
+      border-radius: 6px;
+      padding: 32px 28px;
+      cursor: pointer;
+      transition:
+        transform  220ms var(--ease-out),
+        box-shadow 220ms var(--ease-out),
+        border-color 220ms var(--ease-out);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .copy-card:hover {
+        transform: translateY(-4px);
+        border-color: oklch(38% 0.010 205);
+        box-shadow: 0 12px 32px oklch(0% 0 0 / 0.40);
+      }
+    }
+
+    .copy-card:active { transform: scale(0.99); }
+    .copy-card:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+
+    .copy-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .copy-card-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+
+    .copy-card-status {
+      flex-shrink: 0;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+      padding: 5px 12px;
+      border: 1px solid oklch(72% 0.12 66 / 0.35);
+      border-radius: 30px;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+
+    .copy-card-format {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .copy-card-teaser {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: oklch(66% 0.007 82);
+      font-weight: 300;
+      margin-bottom: 22px;
+    }
+
+    .copy-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--amber);
+    }
+
+    /* Shared modal case-content (also used in copy-modal) */
+    .case-block-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: oklch(72% 0.007 82);
+      margin-bottom: 14px;
+    }
+
+    .case-block p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: oklch(66% 0.007 82);
+      font-weight: 300;
+    }
+
+    .case-block ol {
+      margin: 0;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .case-block li {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: oklch(66% 0.007 82);
+      font-weight: 300;
+    }
+
+    .case-block li strong { color: var(--ink); font-weight: 500; }
+
+    .case-copy { border-top: 1px solid var(--border-sub); padding-top: 36px; }
+
+    .quiz-flow { display: flex; flex-direction: column; margin-top: 24px; }
+
+    .quiz-step { padding: 22px 0; border-top: 1px solid var(--border-sub); }
+    .quiz-step:first-child { border-top: none; padding-top: 0; }
+
+    .quiz-q-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--amber);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .quiz-q-text {
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 400;
+      margin-bottom: 14px;
+    }
+
+    .quiz-options { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .quiz-opt {
+      font-size: 12.5px;
+      color: oklch(70% 0.007 82);
+      background: var(--surface-2);
+      border: 1px solid var(--border-sub);
+      padding: 8px 14px;
+      border-radius: 30px;
+    }
+
+    /* ── Modal ad block (TOF ad sample) ── */
+    .ad-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border-sub);
+      border-radius: 6px;
+      padding: 20px 22px;
+      margin-bottom: 8px;
+    }
+
+    .ad-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .ad-hook {
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: 12px;
+    }
+
+    .ad-primary {
+      font-size: 13px;
+      line-height: 1.75;
+      color: oklch(66% 0.007 82);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .ad-cta {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--amber);
+      border: 1px solid oklch(72% 0.12 66 / 0.35);
+      padding: 7px 16px;
+      border-radius: 30px;
+    }
+
+    /* ── Interstitial card (inside quiz flow) ── */
+    .interstitial-card {
+      margin: 24px 0;
+      padding: 18px 20px;
+      background: var(--surface-2);
+      border-left: 2px solid var(--amber);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .interstitial-label {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .interstitial-headline {
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    .interstitial-quote {
+      font-size: 13px;
+      color: oklch(66% 0.007 82);
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+
+    .interstitial-quote:last-child { margin-bottom: 0; }
+    .interstitial-quote span { font-style: normal; color: var(--muted); }
+
+    /* ── Result reveal (end of quiz) ── */
+    .reveal-block {
+      margin-top: 8px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border-sub);
+    }
+
+    .reveal-checklist {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .reveal-check { font-size: 13px; color: oklch(70% 0.007 82); display: flex; align-items: center; gap: 8px; }
+    .reveal-check::before { content: '✓'; color: oklch(65% 0.13 150); font-weight: 700; }
+
+    .reveal-lead {
+      font-size: 15px;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 18px;
+      line-height: 1.5;
+    }
+
+    .reveal-note {
+      font-size: 13.5px;
+      color: oklch(66% 0.007 82);
+      font-weight: 300;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .reveal-steps {
+      margin: 0 0 14px;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reveal-steps li { font-size: 13.5px; color: oklch(66% 0.007 82); line-height: 1.7; font-weight: 300; }
+
+    .reveal-cta {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: oklch(9% 0.018 205);
+      background: var(--amber);
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-top: 4px;
+    }
+
+    /* ── Advertorial rendering ── */
+    .advertorial-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    .advertorial-byline {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 22px;
+    }
+
+    .advertorial-body p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: oklch(68% 0.007 82);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+
+    .advertorial-cta {
+      display: inline-block;
+      margin: 2px 0 18px;
+      padding: 8px 16px;
+      border: 1px solid oklch(72% 0.12 66 / 0.4);
+      border-radius: 30px;
+      color: var(--amber);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    /* ── Copy case modal ── */
+    .copy-modal { max-width: 760px; }
+    .copy-modal-body { padding: 32px 40px 44px; }
+
+    @media (max-width: 1024px) {
+      .copy-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .copy-section    { padding: 64px 24px 80px; }
+      .copy-modal-body { padding: 24px 22px 32px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .copy-eyebrow::before,
+      .copy-title,
+      .copy-bio,
+      .copy-grid {
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
     }
 
     /* ─── CONTACT SECTION ─── */
@@ -1586,6 +2042,7 @@
 <nav class="nav" id="nav">
   <a href="/" class="nav-logo">HH</a>
   <div class="nav-links">
+    <a href="#copy"    class="nav-link">Copywriting</a>
     <a href="#about"   class="nav-link">About me</a>
     <a href="#work"    class="nav-link">My Work</a>
     <a href="#contact" class="nav-link">Contact</a>
@@ -1632,6 +2089,292 @@
   </div>
 
 </section>
+
+<!-- COPYWRITING -->
+<section id="copy" class="copy-section">
+
+  <div class="copy-header">
+    <p class="copy-eyebrow">Copywriting</p>
+    <h2 class="copy-title">Creative Strategist</h2>
+    <div class="copy-bio">
+      <p>Give me a brand and a week, I'll bring back <u><strong>20 angles and scripts</strong></u> ready to test, not because I'm naturally overflowing with ideas, but because I don't run dry, ever.</p>
+      <p>That's what the matrix is for: every core reason someone buys, crossed with every format that reason could be shown through, crossed again with a few hooks each. When I need a new angle, I'm not inventing one, I'm pulling from a grid that's already full.</p>
+      <p>I've spent almost three years writing scripts and editing video for a youth sports brand, and built the lead funnel behind it that generated $100,000 in revenue over two months. Still early in DTC specifically, but I'd rather prove the claim above on a real brief than argue it in a bio.</p>
+      <p>Give me a brand and a week, I'll bring back <u><strong>20 angles and scripts</strong></u> ready to test.</p>
+    </div>
+  </div>
+
+  <div class="copy-grid" id="copyGrid"></div>
+
+</section>
+
+<!-- COPY CASE MODAL -->
+<div class="modal-backdrop" id="copyModalBackdrop" role="dialog" aria-modal="true">
+  <div class="w-modal copy-modal">
+    <button class="modal-close" id="copyModalClose" aria-label="Close case study">
+      <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+        <path d="M1 1l11 11M12 1L1 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <div class="copy-modal-body" id="copyModalBody"></div>
+  </div>
+</div>
+
+<script>
+  const copySection = document.getElementById('copy');
+  const copyObs = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) { copySection.classList.add('is-visible'); copyObs.disconnect(); }
+  }, { threshold: 0.1 });
+  copyObs.observe(copySection);
+
+  /* ── Copywriting case studies ── */
+  const copyProjects = [
+    {
+      id: 'burnforge',
+      brand: 'BurnForge Shred',
+      format: 'Meta ad + quiz funnel',
+      status: 'Pre-launch sample',
+      teaser: 'A cold-traffic Meta ad feeding a 6-question quiz funnel, with message-matched testimonials and a result-page reveal built to make the offer feel earned, not sold.',
+      overview: 'A thermogenic, appetite-control supplement for men 30–55. One stick a day, mixed with water, taken 20–30 minutes before breakfast. Full label disclosure, no proprietary blend, and a 90-day money-back guarantee, three times the industry standard. $98, launching at $49 for life.',
+      strategy: [
+        'The ad carries the identity hook and defers product name, mechanism, and guarantee to the quiz result, so the pitch isn\'t made twice and the ad itself carries close to zero compliance surface.',
+        '<strong>Q1</strong> sorts by identity first. That decides everything downstream.',
+        '<strong>Q2 + Q3</strong> stay on the single strongest desire from the research, quieting the hunger: first what it is, then when it hits.',
+        'The first interstitial lands right where drop-off usually starts in a quiz this length, and leads with proof on that exact desire.',
+        '<strong>Q5</strong> sits right before the second interstitial, since the result page\'s message match keys off this one answer more than off Q1.',
+        '<strong>Q6</strong> closes with a commitment, not a discovery question, so the reveal\'s simplicity claim reads as a direct answer.',
+      ],
+      type: 'quiz',
+      ad: {
+        label: 'Meta Ad · Cold-Traffic Entry (TOF)',
+        hooks: [
+          'Be your kid\'s superhero dad again.',
+          'Don\'t let your 10-year-old outrun you at the park.',
+        ],
+        primary: 'Maybe it\'s the extra weight that crept on somewhere between work and everything else. Maybe it\'s the energy that used to be there.\n\nWhatever it is, it\'s standing between you and keeping up the way you used to.\n\nAnd it shows up in all the moments that mean the most.\n\nTag at the park, and you\'re the one who taps out first. Not because you don\'t want to keep going. Your body just doesn\'t let you anymore.\n\nHe asks if you want to toss the ball after dinner, and you hear yourself say maybe tomorrow. Again.\n\nHe\'s not going to be ten forever, and neither of you gets those afternoons back.\n\nCould be the weight. Could be the energy crashing every afternoon. Could be something you haven\'t connected to any of this yet. Usually it\'s one specific thing making this harder than it needs to be, not a lack of trying.\n\nTake about 60 seconds to find out which one it actually is for you.',
+        cta: 'Take the 60-second check →',
+      },
+      steps: [
+        { q: 'Q1', text: 'Which one sounds like you right now?', opts: [
+          'Winded chasing my kids at the park',
+          'Standing in front of the fridge again at 10pm',
+          'Three coffees in and still hitting a wall by 2pm',
+          'Stuck at the same body fat no matter what you do',
+          'None of these, just here to see what this is',
+        ]},
+        { q: 'Q2', text: 'What\'s actually been getting in the way?', opts: [
+          'Clean all day, then 10pm happens',
+          '3pm is where the whole day falls apart',
+          'You track every gram and you\'re still starving',
+          'You\'ve tried everything and you\'re still hungry',
+        ]},
+        { q: 'Q3', text: 'When does it usually hit hardest?', opts: [
+          'Late at night, once everyone\'s asleep',
+          '3pm, like clockwork',
+          'All day, it never really lets up',
+          'Not really a craving thing for me',
+        ]},
+        { interstitial: {
+          headline: 'We\'ve found a way to quiet the cravings by day 7.',
+          quotes: [
+            { text: 'Cravings just disappeared.', name: 'Samuel, verified buyer' },
+            { text: 'Fewer cravings within 30 days.', name: 'Charles H., verified buyer' },
+          ],
+        }},
+        { q: 'Q4', text: 'What\'s your day usually look like?', opts: [
+          'Desk job, sharp for an hour then foggy the rest of the day',
+          'I train, the gut just won\'t move',
+          'On the road for work, no real routine',
+        ]},
+        { q: 'Q5', text: 'What matters most to you right now?', opts: [
+          'Losing the fat for good',
+          'Having steady energy, no crash',
+          'Getting the cravings under control',
+          'Staying sharp without the jitters',
+        ]},
+        { interstitial: {
+          headline: '~18 lbs. That\'s the average loss in the first 12 weeks.',
+          quotes: [
+            { text: 'Lost 12 pounds in 6 weeks.', name: 'Ryan B.' },
+            { text: 'Down 8 lbs and feeling stronger than ever.', name: 'Mike J.' },
+          ],
+        }},
+        { q: 'Q6', text: 'Be honest, how much time do you actually have for this?', opts: [
+          'I\'ll make time if it actually works',
+          'Every plan assumes 90 minutes, I have 20',
+          'I already train, I just need this part solved',
+        ]},
+      ],
+      reveal: {
+        checklist: ['Main blocker: identified', 'Craving pattern: identified', 'Activity level: identified', 'Goal: locked in'],
+        lead: 'You\'re not imagining it. Here\'s exactly what\'s been in the way.',
+        note: 'Based on your answers, here\'s what actually needs to happen, in order:',
+        list: [
+          'Quiet the hunger signal first. Not more willpower, the actual signal driving it.',
+          'Keep the energy steady through the day. No crash, no third coffee.',
+          'Let the fat-burning happen on its own, once the first two are handled.',
+        ],
+        closing: 'Most people try to jump straight to step 3. That\'s why it doesn\'t stick.',
+        cta: 'See what handles all three →',
+      },
+    },
+    {
+      id: 'purecrest',
+      brand: 'PureCrest',
+      format: 'Advertorial (MOFU)',
+      status: 'Writing sample',
+      teaser: 'A solution-aware advertorial reframing a recurring skin-fold rash as a treatment gap, not a personal failure, for a reader who already tried the standard cabinet of remedies.',
+      overview: 'Skin-fold treatment brand. Format: short advertorial, editorial-style web page. Objective: MOFU, for a reader who is solution-aware, already knows the term "intertrigo," already tried the standard remedies, had it clear temporarily, and watched it return.',
+      strategy: [
+        'Awareness stage assumes she already knows the name and has tried the standard remedies correctly, so the villain can\'t be "didn\'t know what to use."',
+        'The villain becomes: every product she\'s tried treats the rash sitting on the skin. None of them treat the fold itself, the moisture and friction that let a new rash start the moment the old one clears.',
+        'Emotional entry point starts at the exact rhythm of recurrence, cleared then back by Thursday, since that repeated cycle, not the first flare-up, is the actual wound for this audience.',
+        'Walks through the realistic escalating sequence most women actually go through (baby powder → zinc cream → antifungal cream → hydrocortisone), so she recognizes her own real effort rather than feeling talked down to.',
+        'No invented doctor name or credential. Quotes stay attributed generically, consistent with the compliance discipline already established for this brand\'s asset history.',
+        'Offer stays soft at the close: bundle plus 90-day guarantee, not a full price stack.',
+      ],
+      type: 'advertorial',
+      article: {
+        title: 'Why Does This Miserable Intertrigo Rash Keep Coming Back?',
+        byline: 'By Diane Foster, Health Reporter · Published September 7, 2026',
+        blocks: [
+          { p: 'If you\'ve dealt with a rash in a fold, under the breast, the belly, the groin, you already know this rhythm. Baby powder tonight, gone by morning. Back again by Thursday. Baby powder again.' },
+          { p: '"This is so embarrassing to ask, but I need advice about intertrigo... I feel like I\'m alone." She wasn\'t, dozens of women answered that thread within a day, most of them with the same rhythm: something worked for a week, then didn\'t.' },
+          { p: 'So you try the next thing. Baby powder first, because it\'s already in the house. Then a zinc cream, the kind made for diaper rash, because someone online swore by it. Then an antifungal cream, because a friend or a pharmacist mentioned yeast. One woman tried the antifungal powder specifically and said it "did nothing and actually seemed to irritate my skin more than soothe it." Then hydrocortisone for the itching, which helps the itch and does nothing for the rash underneath.' },
+          { cta: 'If that list sounds familiar, here\'s what\'s actually different →' },
+          { p: 'One source writing about intertrigo directly says it plainly: "once you get intertrigo, you will continue to get it somewhere or other pretty much forever unless the skin folds are eliminated," and calls it a recurring, chronic condition to manage, not a rash to clear once. Every cream in that cabinet treats the rash sitting on the skin.' },
+          { p: 'None of them treat the fold itself, the moisture and friction and heat trapped between two surfaces of skin all day, which is the actual reason a new rash shows up the moment the old one clears.' },
+          { cta: 'That\'s the specific thing this brand was built to go after →' },
+          { p: 'Look at what\'s actually in most people\'s cabinets right now: a zinc diaper cream made for babies, an antifungal shampoo repurposed as a body wash, a men\'s jock-itch wash used somewhere it was never labeled for. None of it was designed for a skin fold specifically. All of it was borrowed from somewhere else, pressed into service because nothing built for this actually existed on the shelf next to it.' },
+          { p: 'This treatment was built for the fold, not the rash sitting on top of it. Same reason it clears, different reason it\'s meant to keep from coming back.' },
+          { cta: 'Two minutes now, before Thursday rolls around again →' },
+          { p: 'Try it for 90 days. If it\'s not the one that finally holds, you get your money back.' },
+        ],
+      },
+    },
+  ];
+
+  function copyCardHTML(p) {
+    return `
+      <article class="copy-card" tabindex="0" role="button" aria-label="Open case study: ${p.brand}" data-id="${p.id}">
+        <div class="copy-card-top">
+          <span class="copy-card-brand">${p.brand}</span>
+          <span class="copy-card-status">${p.status}</span>
+        </div>
+        <p class="copy-card-format">${p.format}</p>
+        <p class="copy-card-teaser">${p.teaser}</p>
+        <span class="copy-card-cta">View full case study
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+            <path d="M1 6h10M6 1l5 5-5 5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </article>`;
+  }
+
+  document.getElementById('copyGrid').innerHTML = copyProjects.map(copyCardHTML).join('');
+
+  function quizStepsHTML(p) {
+    return p.steps.map(s => {
+      if (s.interstitial) {
+        const quotes = s.interstitial.quotes.map(q => `<p class="interstitial-quote">"${q.text}" <span>— ${q.name}</span></p>`).join('');
+        return `
+          <div class="interstitial-card">
+            <p class="interstitial-label">Interstitial</p>
+            <p class="interstitial-headline">${s.interstitial.headline}</p>
+            ${quotes}
+          </div>`;
+      }
+      return `
+        <div class="quiz-step">
+          <span class="quiz-q-num">${s.q}</span>
+          <p class="quiz-q-text">${s.text}</p>
+          <div class="quiz-options">
+            ${s.opts.map(o => `<span class="quiz-opt">${o}</span>`).join('')}
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function quizCaseHTML(p) {
+    return `
+      <div class="ad-block">
+        <p class="ad-label">${p.ad.label}</p>
+        <p class="ad-hook">${p.ad.hooks.join('<br>')}</p>
+        <p class="ad-primary">${p.ad.primary.replace(/\n/g, '<br>')}</p>
+        <span class="ad-cta">${p.ad.cta}</span>
+      </div>
+      <div class="quiz-flow">${quizStepsHTML(p)}</div>
+      <div class="reveal-block">
+        <div class="reveal-checklist">
+          ${p.reveal.checklist.map(c => `<span class="reveal-check">${c}</span>`).join('')}
+        </div>
+        <p class="reveal-lead">${p.reveal.lead}</p>
+        <p class="reveal-note">${p.reveal.note}</p>
+        <ol class="reveal-steps">${p.reveal.list.map(l => `<li>${l}</li>`).join('')}</ol>
+        <p class="reveal-note">${p.reveal.closing}</p>
+        <span class="reveal-cta">${p.reveal.cta}</span>
+      </div>`;
+  }
+
+  function advertorialCaseHTML(p) {
+    const blocks = p.article.blocks.map(b =>
+      b.cta ? `<span class="advertorial-cta">${b.cta}</span>` : `<p>${b.p}</p>`
+    ).join('');
+    return `
+      <p class="advertorial-title">${p.article.title}</p>
+      <p class="advertorial-byline">${p.article.byline}</p>
+      <div class="advertorial-body">${blocks}</div>`;
+  }
+
+  function openCopyModal(id) {
+    const p = copyProjects.find(x => x.id === id);
+    if (!p) return;
+    const body = document.getElementById('copyModalBody');
+    body.innerHTML = `
+      <div class="modal-meta">
+        <span class="modal-brand">${p.format}</span>
+        <span class="modal-cat-badge" style="color:var(--amber);background:oklch(72% 0.12 66 / 0.15)">${p.status}</span>
+      </div>
+      <h2 class="modal-title" style="margin-bottom:24px;">${p.brand}</h2>
+      <div class="case-block" style="margin-bottom:32px;">
+        <p class="case-block-title">Brand overview</p>
+        <p>${p.overview}</p>
+      </div>
+      <div class="case-block" style="margin-bottom:36px;">
+        <p class="case-block-title">Strategy</p>
+        <ol>${p.strategy.map(s => `<li>${s}</li>`).join('')}</ol>
+      </div>
+      <div class="case-copy">
+        <p class="case-block-title">The copy</p>
+        ${p.type === 'quiz' ? quizCaseHTML(p) : advertorialCaseHTML(p)}
+      </div>`;
+    body.scrollTop = 0;
+    document.getElementById('copyModalBackdrop').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCopyModal() {
+    document.getElementById('copyModalBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('copyGrid').addEventListener('click', e => {
+    const card = e.target.closest('.copy-card');
+    if (card) openCopyModal(card.dataset.id);
+  });
+  document.getElementById('copyGrid').addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.copy-card');
+    if (card) { e.preventDefault(); openCopyModal(card.dataset.id); }
+  });
+  document.getElementById('copyModalClose').addEventListener('click', closeCopyModal);
+  document.getElementById('copyModalBackdrop').addEventListener('click', e => {
+    if (e.target.id === 'copyModalBackdrop') closeCopyModal();
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeCopyModal();
+  });
+</script>
 
 <!-- ABOUT -->
 <section id="about" class="about">
